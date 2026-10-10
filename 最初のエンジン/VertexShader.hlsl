@@ -3,7 +3,9 @@ cbuffer ConstantBuffer : register(b0)
     matrix world;
     matrix view;
     matrix projection;
-}
+
+    float4 lightDirection;
+};
 
 struct VS_INPUT
 {
@@ -16,7 +18,6 @@ struct VS_OUTPUT
 {
     float4 pos : SV_POSITION;
     float2 uv : TEXCOORD0;
-    float3 normal : NORMAL;
 };
 
 VS_OUTPUT main(VS_INPUT input)
@@ -31,7 +32,6 @@ VS_OUTPUT main(VS_INPUT input)
 
     output.pos = position;
     output.uv = input.uv;
-    output.normal = input.normal;
 
     return output;
 }

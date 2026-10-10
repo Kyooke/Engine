@@ -48,11 +48,18 @@ int Model::Load(const char* fileName)
 
     ModelData data;
 
-    if (!textureFileName.empty())
-    {
-        data.textureHandle =
-            Image::Load(textureFileName.c_str());
-    }
+if (!textureFileName.empty())
+{
+    MessageBoxA(
+        nullptr,
+        textureFileName.c_str(),
+        "Texture",
+        MB_OK
+    );
+
+    data.textureHandle =
+        Image::Load(textureFileName.c_str());
+}
 
 
     Mesh mesh;

@@ -48,11 +48,12 @@ const std::string& GameObject::GetName() const
 
 void GameObject::SetModelHandle(int handle)
 {
+    modelHandle_ = handle;
 }
 
 int GameObject::GetModelHandle() const
 {
-    return 0;
+    return modelHandle_;
 }
 
 void GameObject::UpdateSub()

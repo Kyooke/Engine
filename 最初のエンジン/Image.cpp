@@ -29,10 +29,7 @@ int Image::Load(const char* fileName)
 
     ImageData image;
 
-    // Assets/ を自動で付ける
-    std::wstring path = L"Assets/";
-
-    path += std::wstring(
+    std::wstring path(
         fileName,
         fileName + strlen(fileName));
 

@@ -24,11 +24,13 @@ void PlayScene::Initialize()
     transform_.position =
         Vector3(0.0f, 0.0f, 5.0f);
 
+    transform_.rotation.y = 30.0f;
+    transform_.rotation.x = 20.0f;
+
     Model::SetTransform(
         model_,
         transform_);
 }
-
 void PlayScene::Update()
 {
     OutputDebugStringA("PlayScene\n");

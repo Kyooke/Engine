@@ -11,6 +11,8 @@ struct ConstantBuffer
     DirectX::XMMATRIX world;
     DirectX::XMMATRIX view;
     DirectX::XMMATRIX projection;
+
+    DirectX::XMFLOAT4 lightDirection;
 };
 
 bool Graphics::Initialize(
@@ -427,6 +429,14 @@ void Graphics::DrawModel(const Transform& transform)
                 viewport_.Width / viewport_.Height,
                 0.1f,
                 1000.0f));
+
+    // ライト方向
+    cb.lightDirection =
+        DirectX::XMFLOAT4(
+            -0.5f,
+            -1.0f,
+            -0.5f,
+            0.0f);
 
     context_->UpdateSubresource(
         constantBuffer_,

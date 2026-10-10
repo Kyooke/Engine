@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <filesystem>
+#include <Windows.h>
 
 bool MTLLoader::Load(
     const char* fileName,
@@ -12,8 +13,20 @@ bool MTLLoader::Load(
 
     if (!file.is_open())
     {
+        MessageBoxA(
+            nullptr,
+            fileName,
+            "MTL OPEN ERROR",
+            MB_OK);
+
         return false;
     }
+
+    MessageBoxA(
+        nullptr,
+        "MTL OPEN OK",
+        "MTL",
+        MB_OK);
 
     std::string line;
 
@@ -31,8 +44,20 @@ bool MTLLoader::Load(
 
             if (textureName.empty())
             {
+                MessageBoxA(
+                    nullptr,
+                    "map_Kd enpty",
+                    "MTL ERROR",
+                    MB_OK);
+
                 return false;
             }
+
+            MessageBoxA(
+                nullptr,
+                textureName.c_str(),
+                "TEXTURE NAME",
+                MB_OK);
 
             std::filesystem::path mtlPath(fileName);
 
@@ -42,9 +67,21 @@ bool MTLLoader::Load(
             textureFileName =
                 texturePath.string();
 
+            MessageBoxA(
+                nullptr,
+                textureFileName.c_str(),
+                "TEXTURE PATH",
+                MB_OK);
+
             return true;
         }
     }
+
+    MessageBoxA(
+        nullptr,
+        "map_Kd が見つかりません",
+        "MTL ERROR",
+        MB_OK);
 
     return false;
 }

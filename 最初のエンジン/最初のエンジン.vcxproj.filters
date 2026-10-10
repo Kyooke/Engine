@@ -82,7 +82,7 @@
       <Filter>ソース ファイル\Engine\ResourceManager</Filter>
     </ClCompile>
     <ClCompile Include="MTLLoader.cpp">
-      <Filter>ソース ファイル\Engine</Filter>
+      <Filter>ソース ファイル\Engine\ResourceManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,7 +144,7 @@
       <Filter>ソース ファイル\Engine\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="MTLLoader.h">
-      <Filter>ソース ファイル\Engine</Filter>
+      <Filter>ソース ファイル\Engine\ResourceManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -89,13 +89,48 @@ bool OBJLoader::Load(
             std::string mtlFile;
             ss >> mtlFile;
 
+            MessageBoxA(
+                nullptr,
+                mtlFile.c_str(),
+                "MTL FILE",
+                MB_OK
+            );
+
             std::filesystem::path objPath(filename);
+
             std::filesystem::path mtlPath =
                 objPath.parent_path() / mtlFile;
 
-            MTLLoader::Load(
+            MessageBoxA(
+                nullptr,
                 mtlPath.string().c_str(),
-                materialFile);
+                "MTL PATH",
+                MB_OK
+            );
+
+            bool result =
+                MTLLoader::Load(
+                    mtlPath.string().c_str(),
+                    materialFile);
+
+            if (result)
+            {
+                MessageBoxA(
+                    nullptr,
+                    materialFile.c_str(),
+                    "TEXTURE FILE",
+                    MB_OK
+                );
+            }
+            else
+            {
+                MessageBoxA(
+                    nullptr,
+                    "MTL LOAD FAILED",
+                    "ERROR",
+                    MB_OK
+                );
+            }
 
             continue;
         }
