@@ -41,10 +41,6 @@ void GameObject::Draw()
 }
 
 
-const std::string& GameObject::GetName() const
-{
-    return name_;
-}
 
 void GameObject::SetModelHandle(int handle)
 {
@@ -81,9 +77,9 @@ void GameObject::DrawSub()
         child->DrawSub();
     }
 }
-Transform& GameObject::GetTransform()
+const std::string& GameObject::GetName() const
 {
-    return transform_;
+    return name_;
 }
 
 void GameObject::AddChild(GameObject* child)

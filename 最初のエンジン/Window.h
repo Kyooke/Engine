@@ -6,10 +6,10 @@ class Window
 {
 public:
     bool Initialize(
-        HINSTANCE hInstance,//今動いているアプリ
-        int width,//横
-		int height,//縦
-		const wchar_t* title);//タイトル
+        HINSTANCE hInstance, // Application instance
+        int width, // width
+        int height, // height
+        const wchar_t* title); // title
     bool ProcessMessage();
 
     HWND GetHwnd() const
@@ -18,5 +18,5 @@ public:
     }
 
 private:
-	HWND hwnd_ = nullptr;//ウィンドウの番号
+    HWND hwnd_ = nullptr; // window handle
 };

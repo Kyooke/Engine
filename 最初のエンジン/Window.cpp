@@ -11,13 +11,11 @@ LRESULT CALLBACK WindowProc(
     case WM_DESTROY:
         PostQuitMessage(0);
         return 0;
+    default:
+        break;
     }
 
-    return DefWindowProc(
-        hwnd,
-        msg,
-        wParam,
-        lParam);
+    return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
 bool Window::Initialize(
@@ -26,8 +24,7 @@ bool Window::Initialize(
     int height,
     const wchar_t* title)
 {
-    const wchar_t CLASS_NAME[] =
-        L"TreasureEngineWindow";
+    const wchar_t CLASS_NAME[] = L"TreasureEngineWindow";
 
     WNDCLASS wc = {};
     wc.lpfnWndProc = WindowProc;
@@ -36,7 +33,7 @@ bool Window::Initialize(
 
     RegisterClass(&wc);
 
-	hwnd_ = CreateWindowEx(//windowを作る
+    hwnd_ = CreateWindowEx(
         0,
         CLASS_NAME,
         title,
@@ -55,29 +52,25 @@ bool Window::Initialize(
         return false;
     }
 
-	ShowWindow(hwnd_, SW_SHOW);//ウィンドウを表示する
+    ShowWindow(hwnd_, SW_SHOW);
+    return true;
+}
+
+// Message processing
+bool Window::ProcessMessage()
+{
+    MSG msg = {};
+
+    while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+    {
+        if (msg.message == WM_QUIT)
+        {
+            return false;
+        }
+
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
 
     return true;
 }
-bool Window::ProcessMessage()//メッセージ処理
-    {
-        MSG msg = {};
-
-        while (PeekMessage(
-            &msg,
-            nullptr,
-            0,
-            0,
-            PM_REMOVE))
-        {
-            if (msg.message == WM_QUIT)
-            {
-                return false;
-            }
-
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-
-        return true;
-    }

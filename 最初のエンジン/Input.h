@@ -8,19 +8,19 @@ public:
 
     static void Update();
 
-    //押している間
+    // While key is held down
     static bool IsKeyDown(int key);
 
-    //押した瞬間
+    // Key pressed (edge)
     static bool IsKey(int key);
 
-    //離した瞬間
+    // Key released (edge)
     static bool IsKeyUp(int key);
 
 private:
 
     static SHORT key_[256];
 
-    //前回のキー状態
+    // Previous key state
     static SHORT oldKey_[256];
 };
