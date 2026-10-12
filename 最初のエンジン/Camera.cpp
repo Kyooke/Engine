@@ -1,17 +1,17 @@
-#include "Camera.h"
+﻿#include "Camera.h"
 
 using namespace DirectX;
 
 Camera::Camera()
     : GameObject("Camera")
 {
-    // カメラを少し後ろに配置
+
     transform_.position.z = -5.0f;
 }
 
 void Camera::Update()
 {
-    // 今は何もしない
+
 }
 
 XMMATRIX Camera::GetViewMatrix() const
